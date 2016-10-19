@@ -4,4 +4,4 @@ Simple showcase of force directed layout for popups on a map to limit overlappin
 
 See it live at https://monsieurlanza.github.io/
 
-Work in progress, please do not reusse for now. 
+Work in progress, please do not reuse for now. 
