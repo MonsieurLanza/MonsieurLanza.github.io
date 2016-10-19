@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Recherche par carte - IMMEA</title>
+	<link rel="stylesheet" type="text/css" href="/css/nmap.css" media="all" />
+	<script src="js/html5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/map/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&amp;mkt=fr-FR" charset="utf-8"></script>
+	<script src="js/raphael-min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/eNextMap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/vector.js" type="text/javascript" charset="utf-8"></script>
+	
+		<script>
+		var map = null;
+		var ns = new NodeSet();
+		
+		$(document).ready(function(){
+			map = new Microsoft.Maps.Map($("#map").get(0), 
+			{
+				credentials:"AkDSUBLxLN-2vRm8fMjFiOXi_bgzCOrhBuW2KGlVc1xDesXeaRF69LVi6NkEq0KY",
+				enableClickableLogo: false,
+				enableSearchLogo: false,
+				bounds: Microsoft.Maps.LocationRect.fromLocations( biens ),
+				zoom: 13,
+				mapTypeId: Microsoft.Maps.MapTypeId.road
+			});
+		 	initevent = Microsoft.Maps.Events.addHandler( map, 'tiledownloadcomplete', drawBiens );
+
+		});
+
+
+    var biens = [
+							
+				new Bien({
+					ID: 102,
+					title: "T2 à NANTES, Proche du Parc de Procé", 
+					latitude: 47.2198127, 
+					longitude: -1.5830278, 
+					description: "	&nbsp;PARC DE PROCE A PROXIMITE&nbsp;-&nbsp;Bel appartement t...",
+					photoUrl: "http://www.immea.fr/image/galerie/G114/t074_salon1.jpg",
+					href: "/b1021705-u3-t2-a-nantes-proche-du-parc-de-proce.html", 
+					price: "0"
+					}),						
+				new Bien({
+					ID: 120,
+					title: "ANCENIS-A LOUER T2", 
+					latitude: 47.3642569, 
+					longitude: -1.1812585, 
+					description: "	ANCENIS - Dans un petit ensemble immobilier, un appartement a...",
+					photoUrl: "http://www.immea.fr/image/galerie/G8/ss100088.jpg",
+					href: "/b1201533-u3-ancenis-a-louer-t2.html", 
+					price: "0"
+					}),						
+				new Bien({
+					ID: 196,
+					title: "NANTES- QUARTIER LAMORICIERE - A LOUER T1 BIS", 
+					latitude: 47.2222922, 
+					longitude: -1.535795, 
+					description: "	NANTES LAMORICIERE - A louer appartement 26m2&nbsp;comprenant...",
+					photoUrl: "http://www.immea.fr/image/galerie/160/p1011393.jpg",
+					href: "/b1961579-u3-nantes--quartier-lamoriciere-a-louer-t1-bis.html", 
+					price: "0"
+					}),						
+				new Bien({
+					ID: 203,
+					title: "OUDON - ALOUER STUDIO 34m²", 
+					latitude: 47.3458398, 
+					longitude: -1.2874871, 
+					description: "	OUDON &agrave; louer studio de 34m2 en RDC avec cuisine s&eac...",
+					photoUrl: "http://www.immea.fr/image/galerie/G013/immea-gestion-et-location_logo-reduit.jpg",
+					href: "/b2031289-u3-oudon-alouer-studio-34.html", 
+					price: "0"
+					}),						
+				new Bien({
+					ID: 240,
+					title: "NANTES CENTRE VILLE - A LOUER STUDIO", 
+					latitude: 47.2172576, 
+					longitude: -1.5554949, 
+					description: "	Quartier de l&#39;H&ocirc;tel de ville studio de 15m2&nbsp;co...",
+					photoUrl: "http://www.immea.fr/image/galerie/G067/2013-01-21-14.04.29.jpg",
+					href: "/b2401301-u3-nantes-centre-ville-a-louer-studio.html", 
+					price: "0"
+					}),						
+				new Bien({
+					ID: 315,
+					title: "ENTRE PONT DU CENS ET PETIT PORT- A LOUER T2 NEUF LIBRE DE SUITE", 
+					latitude: 47.2500627, 
+					longitude: -1.5742878, 
+					description: "	ENTRE PONT DU CENS ET PETIT PORT, A LOUER T2 de 50m&sup2; dan...",
+					photoUrl: "http://www.immea.fr/image/galerie/G171/p1012060.jpg",
+					href: "/b3151774-u3-entre-pont-du-cens-et-petit-port--a-louer-t2-neuf-libre-de-suite.html", 
+					price: "0"
+					}),						
+				new Bien({
+					ID: 254,
+					title: "OUDON - A VENDRE TERRAIN", 
+					latitude: 47.347052, 
+					longitude: -1.284136, 
+					description: "	Terrrain constructible d&#39;une superficie de 630m2 environ ...",
+					photoUrl: "http://www.immea.fr/image/galerie/T208/terrain-juton.jpg",
+					href: "/b2541014-u7-oudon-a-vendre-terrain.html", 
+					price: "70000"
+					}),						
+				new Bien({
+					ID: 94,
+					title: "T1- quartier DALBY- TOUTES AIDES Proche commerces", 
+					latitude: 47.2235095, 
+					longitude: -1.5288706, 
+					description: "	DALBY - Entre Dalby&nbsp;et Toutes Aides, T1 dans une petite ...",
+					photoUrl: "http://www.immea.fr/image/galerie/T083/t08301.jpg",
+					href: "/b941760-u1-t1--quartier-dalby--toutes-aides-proche-commerces.html", 
+					price: "74000"
+					}),						
+				new Bien({
+					ID: 164,
+					title: "OUDON - VUE SUR LA LOIRE", 
+					latitude: 47.347821, 
+					longitude: -1.253768, 
+					description: "	Terrain constructible bois&eacute; d&#39;une superficie de 16...",
+					photoUrl: "http://www.immea.fr/image/galerie/T137/bourdeau-1-oudon.jpg",
+					href: "/b1641814-u1-oudon-vue-sur-la-loire.html", 
+					price: "101500"
+					}),						
+				new Bien({
+					ID: 132,
+					title: "OUDON- A VENDRE MAISON T3", 
+					latitude: 47.3535017, 
+					longitude: -1.2552749, 
+					description: "	Oudon, maison comprenant: s&eacute;jour/salon, cuisine s&eacu...",
+					photoUrl: "http://www.immea.fr/image/galerie/T108/godard-007.jpg",
+					href: "/b1321709-u1-oudon--a-vendre-maison-t3.html", 
+					price: "130800"
+					}),						
+				new Bien({
+					ID: 97,
+					title: "NANTES - Proche gare T3 traversant", 
+					latitude: 47.2203405, 
+					longitude: -1.5318502, 
+					description: "	NANTES - Quartier DALBY -&nbsp;Situ&eacute; dans une petite c...",
+					photoUrl: "http://www.immea.fr/image/galerie/T082/p1012422.jpg",
+					href: "/b971045-u1-nantes-proche-gare-t3-traversant.html", 
+					price: "143000"
+					}),						
+				new Bien({
+					ID: 227,
+					title: "NANTES PROCHE DU PARC DE PROCE - A VENDRE T2 TRES BON ETAT", 
+					latitude: 47.2198819, 
+					longitude: -1.5829216, 
+					description: "	Nantes, situ&eacute; dans un quartier tr&eacute;s agr&eacute;...",
+					photoUrl: "http://www.immea.fr/image/galerie/T187/p1010845.jpg",
+					href: "/b2271414-u1-nantes-proche-du-parc-de-proce-a-vendre-t2-tres-bon-etat.html", 
+					price: "165000"
+					}),						
+				new Bien({
+					ID: 25,
+					title: "Cholet-A voir absolument - Maison sur jardin boisé avec piscine", 
+					latitude: 47.0635886, 
+					longitude: -0.9509471, 
+					description: "	&nbsp;  	Coup de coeur assur&eacute;&nbsp; pour cette maison ...",
+					photoUrl: "http://www.immea.fr/image/galerie/1022/p8161220.jpg",
+					href: "/b251862-u1-cholet-a-voir-absolument-maison-sur-jardin-boise-avec-piscine.html", 
+					price: "377000"
+					})	
+  ];
+
+
+	</script>
+
+</head>
+<body>
+	<header>
+		<h1><a href="/"><img src="/img/flash/logoMAp.jpg" alt="IMMEA - Recherche géographique" /></a></h1>
+	</header>
+
+	<section id="map">
+		
+	</section>
+	<section id="biens">
+		<script>
+			function drawBiens(){
+				for(var i in biens ) {
+					biens[i].attachToMap( map );
+					map.entities.push( biens[i].bubble );
+					
+					var input = biens[i].listView();
+
+					$("#biens").append( input );
+					biens[i].bubble.init();
+					
+					if( ns.length < 10 )
+						ns.push(biens[i].bubble);
+				}
+
+			 	Microsoft.Maps.Events.removeHandler( initevent );
+				Microsoft.Maps.Events.addHandler( map, 'viewchangeend', function() { ns.temperature = 3; /* ns.attractionRepulsion();*/ } );
+			 	// Hack to force offset after pushing entity. Workaround for Bing Maps Bug.
+				map.setView({ center: new Microsoft.Maps.Location( 47.2185047, -1.5446583 ) });
+				
+				
+				ns.ratataPlop();
+				 /* for( var i = 0; i < 10; i++ ) {
+
+					biens[i].bubble.applyForce( new Vector( -30, 50) );
+					biens[i].bubble.plop();
+				} */
+
+			}
+			</script>
+	</section>
+
+</html>

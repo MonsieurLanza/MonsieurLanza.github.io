@@ -1,0 +1,52 @@
+﻿html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a img {
+  border: none;
+}
+
+#spots {
+	background-color: #716f70;
+	background: -moz-linear-gradient(top,#444 0%,#716f70 100%);
+	background: -webkit-linear-gradient(top,#444 0%,#716f70 100%);
+	background: -o-linear-gradient(top,#444 0%,#716f70 100%);
+	background: -ms-linear-gradient(top,#444 0%,#716f70 100%);
+	background: linear-gradient(top,#444 0%,#716f70 100%);
+  position: fixed;
+  height: 113px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #716f70;
+  overflow-x: auto;
+}
+#spots figure {
+  margin: 0;
+  padding: 0;
+  display: table-cell;
+}
+
+#spots img {
+	display:block;
+	margin: 6px;
+  	box-shadow: 3px 3px 5px #333;
+}
+
+#spots img:hover {
+	outline: 3px solid #FF017D;
+}
+
+#map, #raphael {
+  position: fixed !important;
+  top: 0px;
+  bottom: 113px;
+  left: 0;
+  right: 0;
+}
+#map .bubble, #raphael .bubble {
+  overflow: visible;
+  position: absolute;
+}
