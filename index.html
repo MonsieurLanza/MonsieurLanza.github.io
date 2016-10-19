@@ -74,16 +74,10 @@
                 Microsoft.Maps.Events.removeHandler( initevent );
                 Microsoft.Maps.Events.addHandler( map, 'viewchangeend', function() { ns.temperature = 3; /* ns.attractionRepulsion();*/ } );
                 // Hack to force offset after pushing entity. Workaround for Bing Maps Bug.
-                // map.setView({ center: new Microsoft.Maps.Location( 47.2185047, -1.5446583 ) });
+                map.setView({ center: new Microsoft.Maps.Location( 47.2185047, -1.5446583 ) });
                 
                 
                 ns.ratataPlop();
-                 /* for( var i = 0; i < 10; i++ ) {
-
-                    Spots[i].bubble.applyForce( new Vector( -30, 50) );
-                    Spots[i].bubble.plop();
-                } */
-
             }
             </script>
     </section>
